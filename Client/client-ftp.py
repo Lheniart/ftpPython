@@ -4,7 +4,7 @@ from ftplib import FTP
 host = "127.0.0.1"
 # Nom d'utilisateur et mot de passe pour se connecter au serveur FTP
 user = "epsi"
-password = "client25"
+password = "client24"
 
 # Fonction pour télécharger un fichier depuis le serveur FTP
 def download_file(filename):
@@ -29,7 +29,8 @@ def upload_file(filename):
 def change_password(new_password):
     with FTP(host) as ftp:
         ftp.login(user=user, passwd=password)
-        ftp.sendcmd('CMD_CHPASS ' + new_password)
+        response = ftp.sendcmd('CMD_CHPASS ' + new_password)
+        print(response)
 
 # Exemple d'utilisation :
 # Télécharger un fichier depuis le serveur FTP
